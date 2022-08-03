@@ -4,8 +4,21 @@
 #그럼 지지 않는다.#
 ##################
 
-n = 1260
+n,k = map(int, input().split())
 
-print(n%500) ##나머지
-print(n//500) ## 몫
-print(n/500) ## 해
+box = []
+cnt = 0
+a = 0
+result = 0
+
+for i in range(n):
+    box.append(int(input()))
+
+box.sort()
+box.reverse()
+
+for i in range(n):
+    cnt += k//box[i]
+    k %=box[i]
+        
+print(cnt)

@@ -4,13 +4,8 @@
 #그럼 지지 않는다.#
 ##################
 
+n = 1260
 
-def num(a):
-    if a == 0:
-        return 
-    
-    if a == 2:
-        num(a-1)
-    print("안녕",a)
-        
-num(2)
+print(n%500) ##나머지
+print(n//500) ## 몫
+print(n/500) ## 해

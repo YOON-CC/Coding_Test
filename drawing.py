@@ -1,24 +1,17 @@
-##################
-#목표가 있다면    #
-#인생을 걸어라!   #
-#그럼 지지 않는다.#
-##################
+import sys
+input = sys.stdin.readline
 
-n,k = map(int, input().split())
+N = int(input())
 
-box = []
-cnt = 0
-a = 0
+a = list(map(int, input().split()))
+
+a.sort()
+
+sum = 0
 result = 0
 
-for i in range(n):
-    box.append(int(input()))
+for i in range(N):
+    sum += a[i]
+    result += sum
 
-box.sort()
-box.reverse()
-
-for i in range(n):
-    cnt += k//box[i]
-    k %=box[i]
-        
-print(cnt)
+print(result)

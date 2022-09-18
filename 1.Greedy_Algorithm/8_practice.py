@@ -21,7 +21,8 @@ for w in words: # 문자열을 하나씩 뺀다.
         else:
             dict[ww] += pow(10, cnt) # 이 부분이 제일 중요하다.
         cnt -= 1
-print(dict)
+        
+        
 dict = sorted(dict.values(), reverse=True) # '정렬'을 한 이후 값만 쫚뺀다.
 
 result = 0

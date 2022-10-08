@@ -1,45 +1,30 @@
+import sys
 from collections import deque
- 
-n = int(input())
-graph = []
-maxNum = 0
+input = sys.stdin.readline
 
-dx = [0, 0, 1, -1]
-dy = [1, -1, 0, 0]
-for i in range(n):
-    graph.append(list(map(int, input().split())))
-    for j in range(n):
-        if graph[i][j] > maxNum :
-            maxNum = graph[i][j]
-
-#bfs시작            
-def bfs(a, b, value, visited):
+def bfs():
     q = deque()
-    q.append((a,b))
-    visited[a][b] = 1
-    
+    q.append([home[0], home[1]])
     while q:
         x, y = q.popleft()
-        
-        for i in range(4):
-            nx = x + dx[i]
-            ny = y + dy[i]
-            if 0 <= nx < n and 0 <= ny < n: 
-                if graph[nx][ny] > value and not visited[nx][ny]:
-                    visited[nx][ny] = 1
-                    q.append((nx,ny))
+        if abs(x - fest[0]) + abs(y - fest[1]) <= 1000: # 편의점을 들릴 필요가 없는 경우 ㅋ
+            print("happy")
+            return #함수를 끝내는 부분
+        for i in range(n):
+            if not visited[i]: #방문 안한경우
+                new_x, new_y = conv[i] # 새로운 좌표는 편의점의 좌표가 된다. 
+                if abs(x - new_x) + abs(y - new_y) <= 1000:
+                    q.append([new_x, new_y])
+                    visited[i] = 1
 
-result = 0
-for i in range(maxNum):
-    visited = [[0] * n for i in range(n)]
-    cnt = 0
+t = int(input())
+for i in range(t):
+    n = int(input())
+    home = [int(x) for x in input().split()] #출발 좌표를 넣는다.
+    conv = []
     for j in range(n):
-        for k in range(n):
-            if graph[j][k] > i and not visited[j][k]:
-                bfs(j,k,i,visited)
-                cnt+=1
-                
-        if result < cnt:
-            result = cnt
-
-print(result)
+        x, y = map(int, input().split())
+        conv.append([x, y]) # 편의점들의 좌표들을 넣는다.
+    fest = [int(x) for x in input().split()] # 목적지의 좌표를 넣는다. 
+    visited = [0 for i in range(n+1)] #home 제외
+    bfs()

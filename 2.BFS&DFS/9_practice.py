@@ -12,7 +12,7 @@ for i in range(h):
         tmp.append(list(map(int,sys.stdin.readline().split())))
         for k in range(m):
             if tmp[j][k]==1:
-                queue.append([i,j,k])
+                queue.append([i,j,k]) #항상 1로부터 시작을 하기 때문이다.
     graph.append(tmp)
     
 dx = [-1,1,0,0,0,0]

@@ -15,7 +15,7 @@ def bfs(i, j):
         for k in range(4):
             x = a + dx[k]
             y = b + dy[k]
-            if 0 <= x < n and 0 <= y < m and visit[x][y] == 0 and s[x][y] != "W":
+            if 0 <= x < n and 0 <= y < m and visit[x][y] == 0 and s[x][y] != "W": # 들어와도 되는 조건 
                 visit[x][y] = 1
                 s[x][y] = s[a][b] + 1
                 max_n = max(max_n, s[x][y])
@@ -25,7 +25,8 @@ n, m = map(int, input().split())
 s = []
 result = 0
 for i in range(n):
-    s.append(list(input().strip()))
+    s.append(list(input().strip())) # 표넣는 과정
+    
 for i in range(n):
     for j in range(m):
         if s[i][j] != "W": # 욱지라면

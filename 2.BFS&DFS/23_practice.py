@@ -23,13 +23,10 @@ def bfs():
             ny = y + dy[i]
             if 0 <= nx < h and 0 <= ny < w: # 떨어지지 않은 경우
                 if visited[nx][ny] == -1 and (board[nx][ny] == "." or board[nx][ny] == "@"):
-                    #불일경우
-                    if flag == "FIRE": 
+                    if flag == "FIRE":
                         visited[nx][ny] = flag
-                    #상근일 경우
-                    else: 
+                    else: #사람일 경우
                         visited[nx][ny] = flag + 1
-                    #불부터 시작해서 상근 불 상근 이렇게 번갈아 가진다.
                     q.append((nx, ny))
             else: # 떨어진 경우
                 if flag != "FIRE": # flag는 끝자락으로 도착하니 ..

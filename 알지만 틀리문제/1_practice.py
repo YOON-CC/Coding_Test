@@ -15,7 +15,7 @@ visited = [0]*(m+1)
 result = 0
 for _ in range(m):
     a,b = map(int,input().split())
-    graph[a].append(b)
+    graph[a].append(b) # 문제가 양방향으로 이동할수 있다고 하였기 때문에 이렇게 적은것
     graph[b].append(a)
     
 def bfs(start):

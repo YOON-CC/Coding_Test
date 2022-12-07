@@ -2,7 +2,7 @@
 #트리의 순회(전위, 중위, 후위)
 
 import sys
- 
+
 N = int(sys.stdin.readline().strip())
 tree = {}
  
